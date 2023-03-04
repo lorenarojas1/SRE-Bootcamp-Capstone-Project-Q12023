@@ -4,9 +4,9 @@
   "description": "API for SRE Bootcamp",
   "main": "server.js",
   "scripts": {
-    "test": "mocha test --recursive --require babel-core/register --require babel-polyfill",
-    "start": "NODE_ENV=production babel-node index.js",
-    "dev": "nodemon --exec babel-node ./index.js"
+    "test": "jest --watch-all=true",
+    "build": "babel src --out-dir build",
+    "start": "nodemon --exec babel-node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "config": "^1.31.0",
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
+    "eslint-plugin-dependencies": "^2.4.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
@@ -33,9 +34,15 @@
     "sinon": "^11.1.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/core": "^7.21.0",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "chai": "^4.1.2",
+    "eslint": "^8.35.0",
+    "eslint-plugin-jest": "^27.2.1",
     "mocha": "^4.0.1",
     "nodemon": "^1.17.3",
     "supertest": "^3.0.0"
