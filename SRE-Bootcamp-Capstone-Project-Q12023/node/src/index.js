@@ -1,4 +1,4 @@
-const { config } = require('../config');
+import { config } from './config';
 import  app  from './server';
 
 app.listen(config.APP_PORT, function() {

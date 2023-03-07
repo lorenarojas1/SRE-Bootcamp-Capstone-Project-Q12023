@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watch-all=true",
     "build": "babel src --out-dir build",
-    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node --exec babel-node index.js"
+    "start": "nodemon --exec babel-node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -21,30 +21,23 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
-    "config": "^1.31.0",
+    "cookie-parser": "^1.4.6",
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
-    "eslint-plugin-dependencies": "^2.4.0",
+    "ejs": "^3.1.8",
     "express": "^4.17.1",
+    "jest": "^29.5.0",
     "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.3.0",
-    "npm": ">=6.14.6",
-    "restify": "^7.1.1",
-    "sinon": "^11.1.2"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.21.0",
-    "@babel/core": "^7.21.0",
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.20.2",
-    "chai": "^4.1.2",
-    "eslint": "^8.35.0",
-    "eslint-parser": "^8.0.11",
+    "chai": "^4.3.7",
+    "eslint": "^8.34.0",
     "eslint-plugin-jest": "^27.2.1",
-    "mocha": "^4.0.1",
-    "nodemon": "^1.17.3",
-    "prettier": "2.8.4",
-    "supertest": "^3.0.0"
+    "nodemon": "^2.0.20"
   }
 }
