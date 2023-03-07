@@ -2,11 +2,13 @@
   "env": {
     "browser": true,
     "commonjs": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
+  "parser": "eslint-parser",
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 2020
+    "ecmaVersion": "latest"
   },
   "extends": ["eslint:recommended", "plugin:jest/recommended"],
   "plugins": ["jest"],

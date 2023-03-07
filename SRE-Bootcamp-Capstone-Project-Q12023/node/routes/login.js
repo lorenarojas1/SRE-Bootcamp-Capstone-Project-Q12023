@@ -1,4 +1,4 @@
-import { loginFunction } from '../services/controllerMask';
+import { loginFunction } from '../services/login';
 
 export const login = async (req, res, next) => {
     let username = req.body.username;
