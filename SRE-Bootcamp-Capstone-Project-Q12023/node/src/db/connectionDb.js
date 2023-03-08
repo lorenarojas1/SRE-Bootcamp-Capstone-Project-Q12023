@@ -1,5 +1,5 @@
-const mysql = require('mysql');
-const { config } = require('../config');
+import mysql from 'mysql';
+import { config } from '../config';
 
 const initDb = () => {
 	const dbParams = {
