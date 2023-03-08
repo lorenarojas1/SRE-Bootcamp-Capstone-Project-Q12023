@@ -6,7 +6,6 @@ export const protectedRender = async (req, res, next) => {
         let response = {
           data: await protectFunction(jwt)
         };
-				console.log(response)
         if(response.data === null){
             res.status(403).render('forbidden');
         }else{

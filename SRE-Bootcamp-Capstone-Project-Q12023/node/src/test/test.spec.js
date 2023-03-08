@@ -11,10 +11,16 @@ describe('loginFunction()', () => {
     .toBe(result);
   });
 
-  it('Test login wrong credentials', async function () {
+  it('Test login wrong password', async function () {
     // findUserByUsername.mockImplementation(() => Promise.resolve({}));
     const result = await loginFunction('admin', 'nocorrectpassword');
     expect(null)
+    .toBe(result);
+  });
+  it('Test login wrong credentials', async function () {
+    // findUserByUsername.mockImplementation(() => Promise.resolve({}));
+    const result = await loginFunction('user', 'incorrectpassword');
+    expect(undefined)
     .toBe(result);
   });
 });

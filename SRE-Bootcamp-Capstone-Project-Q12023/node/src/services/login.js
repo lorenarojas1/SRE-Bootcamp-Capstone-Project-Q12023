@@ -24,6 +24,6 @@ export const loginFunction = async (username, password) => {
       }
       return null;
     } catch (err) {
-      console.error(err);
+      return undefined;
     }
   };
