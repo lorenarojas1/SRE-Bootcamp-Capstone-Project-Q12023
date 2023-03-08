@@ -89,18 +89,18 @@
   </form>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <% if( alert) { %>
-    <script>
-    Swal.fire({
-      title: '<%= alertTitle %>',
-      text: '<%= alertMessage %>',
-      icon: '<%= alertIcon %>',
-      showConfimButton: <%= showConfirmButton %>,
-      timer: <%= timer %>,
-    }).then(() => {
-      window.location = '/<%= ruta %>'
-    })
-    </script>
-  <% } %>
+<% if( alert) { %>
+  <script>
+  Swal.fire({
+    title: '<%= alertTitle %>',
+    text: '<%= alertMessage %>',
+    icon: '<%= alertIcon %>',
+    showConfimButton: <%= showConfirmButton %>,
+    timer: <%= timer %>,
+  }).then(() => {
+    window.location = '/<%= ruta %>'
+  })
+  </script>
+<% } %>
   </body>
 </html>

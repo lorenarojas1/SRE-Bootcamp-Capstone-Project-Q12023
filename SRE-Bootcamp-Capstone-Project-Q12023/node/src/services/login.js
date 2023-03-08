@@ -1,14 +1,14 @@
-import { findUserByUsername } from '../db/db';
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 import { config } from '../config';
+import { findUserByUsername } from '../db/dbQuery';
 
-export const loginFunction = async (username, input_password) => {
+export const loginFunction = async (username, password) => {
     try {
-      findUserByUsername(username);
+      const userobj = await findUserByUsername(username);
       const hashedPassword = crypto
         .createHash('sha512')
-        .update(input_password + userobj.salt)
+        .update(password + userobj.salt)
         .digest('hex');
       if (!hashedPassword.localeCompare(userobj.password)) {
         const tokenJWT = jwt.sign(

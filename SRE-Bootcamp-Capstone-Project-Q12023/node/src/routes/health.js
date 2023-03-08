@@ -1,4 +1,4 @@
 export const health = (req, res, next) => {
-    res.send('OK');
+    res.status(200).render('health');
     next();
   };
