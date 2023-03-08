@@ -1,9 +1,10 @@
 const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
+import { config } from '../config';
 
-export const protectFunction = (authorization) => {
+export const protectFunction = (token) => {
   try {
-    const user = jwt.verify(authorization, secret);
+    const user = jwt.verify(token, config.JWT_KEY);
+    console.log(user)
     if (user) {
       return 'You are under protected data';
     }
