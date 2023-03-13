@@ -60,3 +60,14 @@ describe('cidrToMaskFunction()', () => {
     expect('No value provided').toStrictEqual(result);
   });
 });
+
+describe('maskToCidrFunction()', () => {
+  it('Test mask to cidr', () => {
+    let result = controllerMask.maskToCidrFunction('255.255.0.0')
+    expect(16).toBe(result);
+  });
+  it('Test mask to cidr with incorrect input', () => {
+    let result = controllerMask.maskToCidrFunction('2ss.a-0.b.x')
+    expect('No value provided').toStrictEqual(result);
+  });
+});

@@ -23,8 +23,12 @@ export const cidrToMaskFunction = (value) => {
 };
 
 export const maskToCidrFunction =  (value) => {
-  let maskToCidr = value.split('.').reduce((c, o) => c - Math.log2(256 - +o), 32)
-  return maskToCidr;
+  let validation =  ipv4ValidationFunction(value);
+  if(validation){
+    let maskToCidr = value.split('.').reduce((c, o) => c - Math.log2(256 - +o), 32)
+    return maskToCidr;
+  }
+  return 'No value provided';
 };
 
 

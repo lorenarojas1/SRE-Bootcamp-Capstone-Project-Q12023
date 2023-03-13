@@ -12,16 +12,15 @@ export const maskToCidr = async (req, res, next) => {
       next();
       console.log('Unauthenticated')
     } else {
-      let value = req.query.value ? req.query.value : false;
-      let validation =  controllerMask.ipv4ValidationFunction(value);
-      if (!validation) {
+      let { value } = req.query;
+      let subnetMask = controllerMask.maskToCidrFunction(value);
+      if (subnetMask === 'No value provided') {
         res.status(404).send('Not Found');
-        console.log('No value provided')
       } else {
         let response = {
           function: 'maskToCidr',
           input: value,
-          output: controllerMask.maskToCidrFunction(value),
+          output: subnetMask,
         };
         res.status(200).send(response);
         next();
