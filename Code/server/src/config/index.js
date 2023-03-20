@@ -10,5 +10,5 @@ export const config = {
 	DB_DATABASE: process.env.DB_DATABASE,
 	DB_PORT: process.env.DB_PORT,
 	JWT_KEY: process.env.JWT_KEY,
-	APP_PORT: process.env.APP_PORT,
+	APP_PORT: process.env.APP_PORT || 8000,
 }
