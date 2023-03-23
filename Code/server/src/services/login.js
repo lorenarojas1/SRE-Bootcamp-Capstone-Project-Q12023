@@ -6,6 +6,7 @@ import { findUserByUsername } from '../db/dbQuery';
 export const loginFunction = async (username, password) => {
     try {
       const userobj = await findUserByUsername(username);
+      console.log(userobj)
       const hashedPassword = crypto
         .createHash('sha512')
         .update(password + userobj.salt)

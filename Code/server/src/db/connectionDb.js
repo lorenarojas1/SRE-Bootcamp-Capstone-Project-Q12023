@@ -20,6 +20,19 @@ const initDb = () => {
     console.log(`Conectado a la base de datos`);
   });
   return connectionDb;
+
 };
 
+
+
+
 export const db = initDb();
+
+
+let sql = 'SELECT * FROM users';
+db.query(sql, (err, results, _) => {
+  if (err) {
+    return console.log.error(err.message);
+  }
+console.log(results)
+});

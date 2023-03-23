@@ -30,11 +30,11 @@ variable "port_app_server" {
   default     = 8000
 }
 
-variable "port_app_client" {
-  description = "The port used by your client application"
-  type        = number
-  default     = 80
-}
+#variable "port_app_client" {
+#  description = "The port used by your client application"
+#  type        = number
+#  default     = 80
+#}
 
 variable "buildspec_path" {
   description = "The location of the buildspec file"
@@ -48,18 +48,18 @@ variable "folder_path_server" {
   default     = "./Code/server/."
 }
 
-variable "folder_path_client" {
-  description = "The location of the client files"
-  type        = string
-  default     = "./Code/client/."
-}
+#variable "folder_path_client" {
+#  description = "The location of the client files"
+#  type        = string
+#  default     = "./Code/client/."
+#}
 
 variable "container_name" {
   description = "The name of the container of each ECS service"
   type        = map(string)
   default = {
     server = "Container-server"
-    client = "Container-client"
+#    client = "Container-client"
   }
 }
 
