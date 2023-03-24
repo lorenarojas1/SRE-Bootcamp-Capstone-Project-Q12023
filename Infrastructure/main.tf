@@ -277,7 +277,7 @@ module "policy_devops_role" {
   create_devops_policy  = true
   ecr_repositories      = [module.ecr_server.ecr_repository_arn]
   code_build_projects   = [module.codebuild_server.project_arn]
-  code_deploy_resources = [module.codedeploy_server.application_arn, module.codedeploy_server.deployment_group_arn, module.codedeploy_client.application_arn, module.codedeploy_client.deployment_group_arn]
+  code_deploy_resources = [module.codedeploy_server.application_arn, module.codedeploy_server.deployment_group_arn]
 }
 
 # ------- Creating a SNS topic -------
@@ -378,64 +378,4 @@ module "dynamodb_table" {
   source = "./Modules/Dynamodb"
   name   = "assets-table-${var.environment_name}"
 }
-
-# ------- Creating and connecting RSD to MySQL Database -------
-module "rds_mysql" {
-  source            = "../../"
-  identifier        = "example"
-  engine_version    = "5.7.28"
-  instance_class    = "db.t2.small"
-  allocated_storage = 20
-  username          = "root"
-  password          = "capstone-secret"
-
-  subnet_ids         = module.vpc.public_subnet_ids
-  vpc_id             = module.vpc.vpc_id
-  source_cidr_blocks = [module.vpc.vpc_cidr_block]
-
-  maintenance_window                  = "mon:10:10-mon:10:40"
-  backup_window                       = "09:10-09:40"
-  apply_immediately                   = false
-  multi_az                            = false
-  port                                = 3306
-  name                                = "example"
-  storage_type                        = "gp2"
-  iops                                = 0
-  auto_minor_version_upgrade          = false
-  allow_major_version_upgrade         = false
-  backup_retention_period             = 0
-  storage_encrypted                   = false
-  kms_key_id                          = ""
-  deletion_protection                 = false
-  final_snapshot_identifier           = "final-snapshot"
-  skip_final_snapshot                 = true
-  enabled_cloudwatch_logs_exports     = []
-  monitoring_interval                 = 0
-  monitoring_role_arn                 = ""
-  iam_database_authentication_enabled = false
-  copy_tags_to_snapshot               = false
-  publicly_accessible                 = true
-  license_model                       = "general-public-license"
-  major_engine_version                = "5.7"
-  description                         = "This is example"
-
-  tags = {
-    Environment = "development"
-  }
-}
-
-module "vpc" {
-  source                    = "git::https://github.com/lorenarojas1/SRE-Bootcamp-Capstone-Project-Q12023.git"
-  cidr_block                = local.cidr_block
-  name                      = "vpc-rds-mysql"
-  public_subnet_cidr_blocks = [cidrsubnet(local.cidr_block, 8, 0), cidrsubnet(local.cidr_block, 8, 1)]
-  public_availability_zones = data.aws_availability_zones.available.names
-}
-
-locals {
-  cidr_block = "10.255.0.0/16"
-}
-
-data "aws_availability_zones" "available" {}
-
 
